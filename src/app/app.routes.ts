@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { CharactersComponent } from './characters/characters.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { CharactersComponent } from '@feature/characters/characters.component';
+import { NotFoundComponent } from '@feature/not-found/not-found.component';
 
 export const routes: Routes = [
 	{ path: 'characters', component: CharactersComponent },

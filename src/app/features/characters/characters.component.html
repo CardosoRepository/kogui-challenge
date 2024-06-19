@@ -1,0 +1,27 @@
+<div class="container">
+	<h2 class="mb-4">Personagens</h2>
+	<div class="card">
+		<div class="card-body">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Nome</th>
+						<th scope="col">Espécie</th>
+						<th scope="col">Criação</th>
+						<th scope="col">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let character of characters">
+						<th scope="row">{{character.id}}</th>
+						<td>{{character.name}}</td>
+						<td>{{character.species}}</td>
+						<td>{{character.creation | date }}</td>
+						<td>{{character.status}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
