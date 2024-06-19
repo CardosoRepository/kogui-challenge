@@ -1,0 +1,17 @@
+.nav-link {
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+
+	&:hover {
+		background-color: #e2e6ea;
+	}
+}
+
+.nav-link.active {
+	font-weight: bold;
+	background-color: #007bff;
+	color: white;
+}
