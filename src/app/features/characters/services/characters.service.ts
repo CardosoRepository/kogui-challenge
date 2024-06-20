@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponse } from '@core/models/api-response.model';
 import { Observable, catchError, throwError } from 'rxjs';
@@ -11,15 +11,20 @@ export class CharactersService {
 
 	constructor(private _http: HttpClient) {}
 
-	getCharacters(page: number = 1): Observable<ApiResponse | any> {
+	getCharacters(page: number = 1, name: string = ''): Observable<ApiResponse | any> {
+		let params = new HttpParams().set('page', page.toString());
+		if (name) {
+            params = params.set('name', name);
+        }
+
 		return this._http
-			.get(`${this.API_URL}/character/?page=${page}`)
+			.get(`${this.API_URL}/character/`, { params })
 			.pipe(catchError((error) => this._handleError(error)));
 	}
 
-	getCharacter(id: number): Observable<any> {
+	getCharacter(name: number): Observable<any> {
 		return this._http
-			.get(`${this.API_URL}/character/${id}`)
+			.get(`${this.API_URL}/character/?name=${name}`)
 			.pipe(catchError((error) => this._handleError(error)));
 	}
 
