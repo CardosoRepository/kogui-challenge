@@ -3,3 +3,11 @@ body {
 	min-height: 100vh;
 	min-width: 561px;
 }
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.disabled {
+	cursor: not-allowed;
+}

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ApiResponse } from '@core/models/api-response.model';
 import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
@@ -10,9 +11,9 @@ export class CharactersService {
 
 	constructor(private _http: HttpClient) {}
 
-	getCharacters(): Observable<any> {
+	getCharacters(page: number = 1): Observable<ApiResponse | any> {
 		return this._http
-			.get(`${this.API_URL}/character`)
+			.get(`${this.API_URL}/character/?page=${page}`)
 			.pipe(catchError((error) => this._handleError(error)));
 	}
 
