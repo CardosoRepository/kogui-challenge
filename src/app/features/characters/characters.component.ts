@@ -29,6 +29,7 @@ export class CharactersComponent implements OnDestroy {
 	page: number = 1;
 	totalPages: number = 0;
 	searchTerm: string = '';
+	isLoading: boolean = false;
 
 	private _searchSubscription: Subscription;
 
@@ -56,6 +57,7 @@ export class CharactersComponent implements OnDestroy {
 	}
 
 	private _getCharacters(page: number, name: string) {
+		this.isLoading = true;
 		this._charactersService.getItems(page, name).subscribe({
 			next: (data) => {
 				if (data.results) {
@@ -66,9 +68,11 @@ export class CharactersComponent implements OnDestroy {
 				} else {
 					this.error = 'Falha ao buscar os personagens.';
 				}
+				this.isLoading = false;
 			},
 			error: (error) => {
 				this.error = error.message;
+				this.isLoading = false;
 			},
 		});
 	}
