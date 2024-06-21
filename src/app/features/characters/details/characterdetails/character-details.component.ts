@@ -3,7 +3,7 @@ import { Component, LOCALE_ID, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '@core/models/character.model';
 import { DateLocaleService } from '@core/services/date-locale.service';
-import { CharactersService } from '@feature/characters/services/characters.service';
+import { CharactersService } from '@core/services/characters.service';
 
 @Component({
 	selector: 'app-character-details',
@@ -39,7 +39,7 @@ export class CharacterDetailsComponent implements OnInit {
 	}
 
 	private _getCharacterDetails(id: number) {
-		this._charactersService.getCharacterById(id).subscribe({
+		this._charactersService.getItemById(id).subscribe({
 			next: (data) => {
 				this.character = data;
 				this.error = null;

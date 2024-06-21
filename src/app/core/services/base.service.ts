@@ -1,34 +1,31 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { ApiResponse } from '@core/models/api-response.model';
 import { Observable, catchError, throwError } from 'rxjs';
 
-@Injectable({
-	providedIn: 'root',
-})
-export class CharactersService {
-	private API_URL = 'https://rickandmortyapi.com/api';
+export class BaseService {
+	private _API_URL = 'https://rickandmortyapi.com/api';
 
-	constructor(private _http: HttpClient) {}
+	constructor(protected _http: HttpClient, private _endpoint: string) {}
 
-	getCharacters(page: number = 1, name: string = ''): Observable<ApiResponse | any> {
+	// TODO: remove 'any' from the Observable generic
+	getItems(page: number = 1, name: string = ''): Observable<ApiResponse | any> {
 		let params = new HttpParams().set('page', page.toString());
 		if (name) {
-            params = params.set('name', name);
-        }
+			params = params.set('name', name);
+		}
 
 		return this._http
-			.get(`${this.API_URL}/character/`, { params })
+			.get(`${this._API_URL}/${this._endpoint}/`, { params })
 			.pipe(catchError((error) => this._handleError(error)));
 	}
 
-	getCharacterById(id: number): Observable<any> {
+	getItemById(id: number): Observable<any> {
 		return this._http
-			.get(`${this.API_URL}/character/${id}`)
+			.get(`${this._API_URL}/${this._endpoint}/${id}`)
 			.pipe(catchError((error) => this._handleError(error)));
 	}
 
-	private _handleError(error: any) {
+	protected _handleError(error: any) {
 		console.error(error);
 		return throwError(
 			() =>

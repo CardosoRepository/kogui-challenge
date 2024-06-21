@@ -3,7 +3,7 @@ import { Component, LOCALE_ID, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Episode } from '@core/models/episode.model';
 import { DateLocaleService } from '@core/services/date-locale.service';
-import { EpisodesService } from '@feature/episodes/services/episodes.service';
+import { EpisodesService } from '@core/services/episodes.service';
 
 @Component({
 	selector: 'app-episode-details',
@@ -39,7 +39,7 @@ export class EpisodeDetailsComponent implements OnInit {
 	}
 
 	private _getEpisodeDetails(id: number) {
-		this._episodesService.getEpisodeById(id).subscribe({
+		this._episodesService.getItemById(id).subscribe({
 			next: (data) => {
 				this.episode = data;
 				this.error = null;

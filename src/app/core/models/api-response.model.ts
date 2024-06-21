@@ -1,4 +1,6 @@
 import { Character } from "./character.model";
+import { Location } from "./location.model";
+import { Episode } from "./episode.model";
 
 export interface ApiResponse {
 	info: {
@@ -7,5 +9,5 @@ export interface ApiResponse {
         next: string;
         prev: string;
     };
-    results: Character[];
+    results: Character[] | Location[] | Episode[];
 }

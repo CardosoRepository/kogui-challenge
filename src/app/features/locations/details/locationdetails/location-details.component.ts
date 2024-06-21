@@ -3,7 +3,7 @@ import { Component, LOCALE_ID, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@core/models/location.model';
 import { DateLocaleService } from '@core/services/date-locale.service';
-import { LocationsService } from '@feature/locations/services/locations.service';
+import { LocationsService } from '@core/services/locations.service';
 
 @Component({
 	selector: 'app-location-details',
@@ -39,7 +39,7 @@ export class LocationDetailsComponent implements OnInit {
 	}
 
 	private _getLocationDetails(id: number) {
-		this._locationsService.getLocationById(id).subscribe({
+		this._locationsService.getItemById(id).subscribe({
 			next: (data) => {
 				this.location = data;
 				this.error = null;

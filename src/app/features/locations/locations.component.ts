@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { DateLocaleService } from '@core/services/date-locale.service';
 import { LOCALE_ID } from '@angular/core';
-import { LocationsService } from './services/locations.service';
+import { LocationsService } from '@core/services/locations.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@core/models/location.model';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
@@ -56,7 +56,7 @@ export class LocationsComponent implements OnDestroy {
 	}
 
 	private _getLocations(page: number, name: string) {
-		this._locationsService.getLocations(page, name).subscribe({
+		this._locationsService.getItems(page, name).subscribe({
 			next: (data) => {
 				if (data.results) {
 					this.locations = data.results;

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { DateLocaleService } from '@core/services/date-locale.service';
 import { LOCALE_ID } from '@angular/core';
-import { EpisodesService } from './services/episodes.service';
+import { EpisodesService } from '@core/services/episodes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Episode } from '@core/models/episode.model';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
@@ -56,7 +56,7 @@ export class EpisodesComponent implements OnDestroy {
 	}
 
 	private _getEpisodes(page: number, name: string) {
-		this._episodesService.getEpisodes(page, name).subscribe({
+		this._episodesService.getItems(page, name).subscribe({
 			next: (data) => {
 				if (data.results) {
 					this.episodes = data.results;

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { DateLocaleService } from '@core/services/date-locale.service';
 import { LOCALE_ID } from '@angular/core';
-import { CharactersService } from './services/characters.service';
+import { CharactersService } from '@core/services/characters.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '@core/models/character.model';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
@@ -56,7 +56,7 @@ export class CharactersComponent implements OnDestroy {
 	}
 
 	private _getCharacters(page: number, name: string) {
-		this._charactersService.getCharacters(page, name).subscribe({
+		this._charactersService.getItems(page, name).subscribe({
 			next: (data) => {
 				if (data.results) {
 					this.characters = data.results;
