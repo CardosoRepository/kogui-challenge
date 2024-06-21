@@ -1,0 +1,54 @@
+<div class="container p-4">
+	<div class="info-inline mb-4">
+		<h2>
+			<span class="text-primary">#{{id}}</span>
+			Detalhes de <span class="text-decoration-underline">{{ location.name }}</span>
+		</h2>
+		<button class="btn btn-outline-secondary align-middle" (click)="goToLocationList()">
+			<i class="bi bi-arrow-left-short"></i>Voltar
+		</button>
+	</div>
+	<div class="card">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm-12 col-md-8 p-4">
+					<div class="mb-4">
+						<h3 class="d-flex align-middle">
+							<i class="bi bi-person-badge me-2 text-warning"></i>
+							<span>Informações</span>
+						</h3>
+						<div class="bg-light border border-dark rounded p-2 shadow">
+							<div class="info-inline">
+								<span>ID</span>
+								<span>{{ location.id }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Nome</span>
+								<span>{{ location.name }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Tipo</span>
+								<span>{{ location.type || '-' }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Criado em</span>
+								<span>{{ location.created }}</span>
+							</div>
+						</div>
+					</div>
+					<div class="mb-4">
+						<h3 class="d-flex align-middle">
+							<i class="bi bi-person-badge me-2 text-warning"></i>
+							<span>{{ location.dimension }}</span>
+						</h3>
+						<div class="bg-light border border-dark rounded p-2 shadow">
+							<img class="rounded-circle me-2"
+								[src]="'https://rickandmortyapi.com/api/character/avatar/1.jpeg'" alt="character"
+								width="32" height="32">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

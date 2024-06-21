@@ -1,0 +1,49 @@
+<div class="container p-4">
+	<h2 class="mb-4">Locais</h2>
+	<div class="card">
+		<div class="card-body px-0">
+			<div *ngIf="error; else locationsList">
+				<div class="alert alert-warning m-0" role="alert">
+					{{ error }}
+				</div>
+			</div>
+			<ng-template #locationsList>
+				<table class="table table-striped table-hover table-sm" *ngIf="locations; else loading">
+					<thead>
+						<tr class="align-middle">
+							<th class="table-cell text-center" scope="col">ID</th>
+							<th class="table-cell" scope="col">Nome</th>
+							<th class="table-cell" scope="col">Tipo</th>
+							<th class="table-cell" scope="col">Criação</th>
+							<th class="table-cell" scope="col">Dimensão</th>
+							<th class="table-cell" scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="align-middle" *ngFor="let location of locations">
+							<td class="table-cell text-center" scope="row"><span class="text-primary fw-bold">#{{location.id}}</span></td>
+							<td class="table-cell">{{location.name}}</td>
+							<td class="table-cell">{{location.type}}</td>
+							<td class="table-cell">{{location.created | date: 'dd/MM/yyyy' }}<br />
+								<span class="text-muted">{{location.created | date: 'HH:mm' }}</span>
+							</td>
+							<td class="table-cell">{{location.dimension}}</td>
+							<td class="table-cell">
+								<button class="btn btn-primary btn-sm float-end me-2"
+									(click)="getLocationDetails(location.id)">Detalhes
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="d-flex justify-content-center">
+					<app-pagination [page]="page" [totalPages]="totalPages"
+						(pageChange)="goToPage($event)"></app-pagination>
+				</div>
+				<ng-template #loading>
+					<p>Loading...</p>
+				</ng-template>
+			</ng-template>
+		</div>
+	</div>
+</div>

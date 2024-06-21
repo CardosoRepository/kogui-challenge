@@ -1,0 +1,12 @@
+.character-image {
+	width: 100%;
+	height: auto; /* Mantém a proporção da imagem */
+	object-fit: cover; /* Cobre o contêiner da imagem */
+	max-height: 100%; /* Certifica-se que a imagem não ultrapasse a altura do contêiner */
+}
+
+.info-inline {
+	display: flex;
+	justify-content: space-between;
+	padding-inline: 0.5rem;
+}
