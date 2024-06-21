@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container p-4">
 	<h2 class="mb-4">Personagens</h2>
 	<div class="card">
-		<div class="card-body">
+		<div class="card-body px-0">
 			<div *ngIf="error; else charactersList">
 				<div class="alert alert-warning m-0" role="alert">
 					{{ error }}
@@ -23,7 +23,7 @@
 						<tr class="align-middle" *ngFor="let character of characters">
 							<td class="table-cell text-center" scope="row"><span class="text-primary fw-bold">#{{character.id}}</span></td>
 							<td class="table-cell">
-								<img class="rounded-circle me-2" src="https://github.com/mdo.png" alt="mdo" width="32"
+								<img class="rounded-circle me-2" [src]="character.image" alt="character" width="32"
 									height="32">
 								<span>{{character.name}}</span>
 							</td>
@@ -40,8 +40,10 @@
 						</tr>
 					</tbody>
 				</table>
-				<app-pagination [page]="page" [totalPages]="totalPages"
-					(pageChange)="goToPage($event)"></app-pagination>
+				<div class="d-flex justify-content-center">
+					<app-pagination [page]="page" [totalPages]="totalPages"
+						(pageChange)="goToPage($event)"></app-pagination>
+				</div>
 				<ng-template #loading>
 					<p>Loading...</p>
 				</ng-template>

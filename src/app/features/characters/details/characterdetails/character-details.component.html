@@ -1,1 +1,64 @@
-<p>character details works!</p>
+<div class="container p-4">
+    <h2 class="mb-4">
+        <span class="text-primary">#{{id}}</span>
+        Detalhes de {{ character.name }}
+    </h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 col-md-4 text-center text-md-start p-4 pb-2">
+                    <img class="img-fluid character-image rounded-3 border border-dark shadow" [src]="character.image"
+                        alt="character">
+                </div>
+                <div class="col-sm-12 col-md-8 p-4">
+                    <div class="mb-4">
+                        <h3>Identidade</h3>
+                        <div class="bg-light border border-dark rounded p-2 shadow">
+                            <div class="info-inline">
+                                <span>ID</span>
+                                <span>{{ character.id }}</span>
+                            </div>
+                            <div class="info-inline">
+                                <span>Nome</span>
+                                <span>{{ character.name }}</span>
+                            </div>
+                            <div class="info-inline">
+                                <span>Espécie</span>
+                                <span>{{ character.species }}</span>
+                            </div>
+                            <div class="info-inline">
+                                <span>Tipo</span>
+                                <span>{{ character.type || '-' }}</span>
+                            </div>
+                            <div class="info-inline">
+                                <span>Gênero</span>
+                                <span>{{ character.gender }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h3>Origem</h3>
+                        <div class="bg-light border border-dark rounded p-2 shadow">
+                            <div class="info-inline">
+                                <span>Origem</span>
+                                <span *ngIf="character.origin">{{ character.origin.name }}</span>
+                            </div>
+                            <div class="info-inline">
+                                <span>Local</span>
+                                <span *ngIf="character.location">{{ character.location.name }}</span>
+                            </div>
+                            <div class="info-inline">
+                                <span>Criação</span>
+                                <span>{{ character.created }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <button class="btn btn-primary me-2">Primeira Aparição</button>
+                        <button class="btn btn-outline-primary">Origem</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

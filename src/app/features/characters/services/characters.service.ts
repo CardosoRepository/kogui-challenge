@@ -22,9 +22,9 @@ export class CharactersService {
 			.pipe(catchError((error) => this._handleError(error)));
 	}
 
-	getCharacter(name: number): Observable<any> {
+	getCharacterById(id: number): Observable<any> {
 		return this._http
-			.get(`${this.API_URL}/character/?name=${name}`)
+			.get(`${this.API_URL}/character/${id}`)
 			.pipe(catchError((error) => this._handleError(error)));
 	}
 
