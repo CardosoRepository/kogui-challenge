@@ -28,14 +28,14 @@ export class CharacterDetailsComponent implements OnInit {
 		private _dateLocaleService: DateLocaleService,
 		private _charactersService: CharactersService,
 		private _router: Router,
-		private _activatedRoute: ActivatedRoute,
+		private _activatedRoute: ActivatedRoute
 	) {}
 
 	ngOnInit(): void {
 		this._activatedRoute.params.subscribe((params) => {
-            this.id = params['id'];
+			this.id = params['id'];
 			this._getCharacterDetails(this.id);
-        });
+		});
 	}
 
 	private _getCharacterDetails(id: number) {
@@ -43,7 +43,6 @@ export class CharacterDetailsComponent implements OnInit {
 			next: (data) => {
 				this.character = data;
 				this.error = null;
-
 			},
 			error: (error) => {
 				this.error = error.message;
@@ -51,8 +50,8 @@ export class CharacterDetailsComponent implements OnInit {
 		});
 	}
 
-	goToPage(page: number) {
-
+	goToCharacterList() {
+		this._router.navigate(['/characters']);
 	}
 
 	formatDate(date: string): string {
