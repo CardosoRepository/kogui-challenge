@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { CharactersComponent } from '@feature/characters/characters.component';
-import { CharacterDetailsComponent } from '@feature/characters/details/characterdetails/character-details.component';
-import { EpisodeDetailsComponent } from '@feature/episodes/details/episodedetails/episode-details.component';
+import { CharacterDetailsComponent } from '@feature/characters/details/character-details.component';
+import { EpisodeDetailsComponent } from '@feature/episodes/details/episode-details.component';
 import { EpisodesComponent } from '@feature/episodes/episodes.component';
-import { LocationDetailsComponent } from '@feature/locations/details/locationdetails/location-details.component';
+import { LocationDetailsComponent } from '@feature/locations/details/location-details.component';
 import { LocationsComponent } from '@feature/locations/locations.component';
 import { NotFoundComponent } from '@feature/not-found/not-found.component';
 
