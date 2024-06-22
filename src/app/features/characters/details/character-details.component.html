@@ -9,13 +9,13 @@
 		</button>
 	</div>
 	<div class="card">
-		<div class="card-body">
-			<div class="row">
-				<div class="col-sm-12 col-md-4 text-center text-md-start align-content-center p-4 pb-2">
+		<div class="card-body p-5">
+			<div class="row justify-content-center">
+				<div class="col-sm-12 col-md-5 col-lg-4 text-center text-md-start align-content-center p-4">
 					<img class="img-fluid character-image rounded-3 border border-dark shadow" [src]="character.image"
 						alt="character">
 				</div>
-				<div class="col-sm-12 col-md-8 p-4">
+				<div class="col-sm-12 col-md-7 col-lg-8 p-4">
 					<div class="mb-4">
 						<h3 class="d-flex align-middle">
 							<i class="bi bi-person-badge me-2 text-warning"></i>
@@ -44,7 +44,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="mb-4">
+					<div class="">
 						<h3 class="d-flex align-middle">
 							<i class="bi bi-globe-americas me-2 text-warning"></i>
 							<span>Origem</span>
@@ -63,10 +63,6 @@
 								<span>{{ character.created }}</span>
 							</div>
 						</div>
-					</div>
-					<div class="mt-2">
-						<button class="btn btn-primary me-2">Primeira Aparição</button>
-						<button class="btn btn-outline-primary">Origem</button>
 					</div>
 				</div>
 			</div>

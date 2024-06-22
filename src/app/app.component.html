@@ -1,4 +1,7 @@
 <app-header></app-header>
-<div class="bg-light">
+<div class="bg-light min-vh-100">
+	<ng-container *ngIf="showSearchBar">
+		<app-search-bar></app-search-bar>
+	</ng-container>
 	<router-outlet></router-outlet>
 </div>
