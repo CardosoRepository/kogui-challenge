@@ -29,6 +29,7 @@ export class EpisodesComponent implements OnDestroy {
 	page: number = 1;
 	totalPages: number = 0;
 	searchTerm: string = '';
+	isLoading: boolean = false;
 
 	private _searchSubscription: Subscription;
 
@@ -56,6 +57,7 @@ export class EpisodesComponent implements OnDestroy {
 	}
 
 	private _getEpisodes(page: number, name: string) {
+		this.isLoading = true;
 		this._episodesService.getItems(page, name).subscribe({
 			next: (data) => {
 				if (data.results) {
@@ -64,11 +66,13 @@ export class EpisodesComponent implements OnDestroy {
 					this.totalPages = data.info.pages;
 					this.error = null;
 				} else {
-					this.error = 'Falha ao buscar os personagens.';
+					this.error = 'Falha ao buscar os episódios.';
 				}
+				this.isLoading = false;
 			},
 			error: (error) => {
 				this.error = error.message;
+				this.isLoading = false;
 			},
 		});
 	}
