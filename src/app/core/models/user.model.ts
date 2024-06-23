@@ -3,3 +3,8 @@ export interface User {
 	password: string;
 	image?: string;
 }
+
+export interface UserProfile {
+	username: string;
+	image?: string;
+}

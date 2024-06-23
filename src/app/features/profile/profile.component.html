@@ -1,0 +1,23 @@
+<div class="container p-4">
+	<div class="text-center mb-4">
+		<h2>Perfil do usuário</h2>
+		<div class="mb-4">
+			<ng-container *ngIf="newImageUrl.trim() !== '' && newImageUrl !== user?.image; else currentUserImage">
+				<img class="img-fluid rounded-circle border border-dark shadow" [src]="newImageUrl" alt="user_img"
+					width="128" height="128">
+			</ng-container>
+			<ng-template #currentUserImage>
+				<img class="img-fluid rounded-circle border border-dark shadow" [src]="user?.image" alt="user_img"
+					width="128" height="128">
+			</ng-template>
+		</div>
+		<h3>{{ user?.username }}</h3>
+	</div>
+	<div class="card">
+		<div class="card-body p-5">
+			<h4>Editar imagem</h4>
+			<input class="form-control mb-2" type="text" [(ngModel)]="newImageUrl" placeholder="URL da nova imagem">
+			<button class="btn btn-primary" (click)="updateImage()" [disabled]="newImageUrl.trim() === ''">Atualizar imagem</button>
+		</div>
+	</div>
+</div>

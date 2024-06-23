@@ -24,4 +24,8 @@ export class HeaderComponent implements OnInit {
 		this._authService.logout();
         this._router.navigate(['/login']);
 	}
+
+	goToProfile() {
+		this._router.navigate(['/profile']);
+	}
 }

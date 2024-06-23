@@ -18,10 +18,8 @@
 					<span class="mx-2">{{currentUser?.username}}</span>
 				</a>
 				<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-					<li><a class="dropdown-item" [routerLink]="'profile'">Perfil</a></li>
-					<li>
-						<hr class="dropdown-divider">
-					</li>
+					<li><a class="dropdown-item" [routerLink]="'profile'" (click)="goToProfile()">Perfil</a></li>
+					<li><hr class="dropdown-divider"></li>
 					<li><button class="dropdown-item" (click)="logout()">Logout</button></li>
 				</ul>
 			</div>

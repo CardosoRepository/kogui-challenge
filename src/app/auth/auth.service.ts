@@ -60,6 +60,21 @@ export class AuthService {
 		return true;
 	}
 
+	updateUserImage(imageUrl: string): void {
+		if (this.currentUser) {
+			this.currentUser.image = imageUrl;
+
+			const users = this.getUsers().map((user) =>
+				user.username === this.currentUser!.username
+					? this.currentUser
+					: user
+			);
+
+			this.setUsers(users as User[]);
+			localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+		}
+	}
+
 	isAuthenticated(): boolean {
 		return this.currentUser !== null;
 	}
