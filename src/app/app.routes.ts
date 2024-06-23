@@ -6,14 +6,17 @@ import { EpisodesComponent } from '@feature/episodes/episodes.component';
 import { LocationDetailsComponent } from '@feature/locations/details/location-details.component';
 import { LocationsComponent } from '@feature/locations/locations.component';
 import { NotFoundComponent } from '@feature/not-found/not-found.component';
+import { LoginComponent } from './auth/login/login.component';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
-	{ path: 'characters/:id', component: CharacterDetailsComponent },
-	{ path: 'characters', component: CharactersComponent },
-	{ path: 'locations/:id', component: LocationDetailsComponent },
-	{ path: 'locations', component: LocationsComponent },
-	{ path: 'episodes/:id', component: EpisodeDetailsComponent },
-	{ path: 'episodes', component: EpisodesComponent },
-	{ path: '', redirectTo: 'characters', pathMatch: 'full'},
+	{ path: 'login', component: LoginComponent},
+	{ path: 'characters/:id', component: CharacterDetailsComponent, canActivate: [authGuard] },
+	{ path: 'characters', component: CharactersComponent, canActivate: [authGuard] },
+	{ path: 'locations/:id', component: LocationDetailsComponent, canActivate: [authGuard] },
+	{ path: 'locations', component: LocationsComponent, canActivate: [authGuard] },
+	{ path: 'episodes/:id', component: EpisodeDetailsComponent, canActivate: [authGuard] },
+	{ path: 'episodes', component: EpisodesComponent, canActivate: [authGuard] },
+	{ path: '', redirectTo: 'login', pathMatch: 'full'},
 	{ path: '**', component: NotFoundComponent},
 ];
