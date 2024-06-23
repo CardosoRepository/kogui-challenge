@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 	loginForm: FormGroup;
 	error: string | null = null;
+	isRegistering: boolean = false;
 
 	constructor(
 		private _fb: FormBuilder,
@@ -26,20 +27,37 @@ export class LoginComponent {
 		private _router: Router
 	) {
 		this.loginForm = this._fb.group({
-			username: ['', Validators.required],
-			password: ['', Validators.required],
+			username: ['user', Validators.required],
+			password: ['password', Validators.required],
 		});
 	}
 
 	onSubmit() {
-		if (this.loginForm.valid) {
-			const { username, password } = this.loginForm.value;
-
-			if (this._authService.login(username, password)) {
-				this._router.navigate(['/characters']);
+		if (this.isRegistering) {
+			const registered = this._authService.register(this.loginForm.value);
+			if (registered) {
+				this.toggleMode();
 			} else {
-				this.error = 'Usuário ou senha inválidos';
+				this.error =
+					'Nome de usuário já existe. Por favor, escolha outro.';
+			}
+		} else {
+			if (this.loginForm.valid) {
+				const loggedIn = this._authService.login(this.loginForm.value);
+
+				if (loggedIn) {
+					this._router.navigate(['/characters']);
+				} else {
+					this.error =
+						'Credenciais inválidas. Por favor, tente novamente.';
+				}
 			}
 		}
+	}
+
+	toggleMode() {
+		this.loginForm.reset();
+		this.isRegistering = !this.isRegistering;
+		this.error = null;
 	}
 }

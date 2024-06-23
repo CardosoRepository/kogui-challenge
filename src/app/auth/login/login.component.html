@@ -1,18 +1,30 @@
 <div class="min-vh-100 align-content-center">
 	<div class="login-container">
-		<form [formGroup]="loginForm" (submit)="onSubmit()">
-			<div class="form-group">
-				<label for="username">Usuário</label>
-				<input id="username" type="text" formControlName="username" class="form-control">
+		<div class="row justify-content-center p-2">
+			<div class="col">
+				<h2>{{ isRegistering ? 'Registrar' : 'Login'}}</h2>
+				<form [formGroup]="loginForm" (submit)="onSubmit()">
+					<div class="form-group mb-3">
+						<label class="form-label" for="username">Usuário</label>
+						<input class="form-control" id="username" type="text" formControlName="username">
+					</div>
+					<div class="form-group mb-3">
+						<label class="form-label" for="password">Senha</label>
+						<input class="form-control" id="password" type="password" formControlName="password">
+					</div>
+					<div *ngIf="error" class="alert alert-danger mb-3">
+						{{ error }}
+					</div>
+
+					<button type="submit" class="btn btn-primary mb-2" [disabled]="loginForm.invalid">
+						{{ isRegistering ? 'Registrar' : 'Login' }}
+					</button>
+
+					<button type="button" class="btn btn-link" (click)="toggleMode()">
+						{{ isRegistering ? 'Já tem uma conta? Faça login' : 'Não tem uma conta? Registre-se' }}
+					</button>
+				</form>
 			</div>
-			<div class="form-group">
-				<label for="password">Senha</label>
-				<input id="password" type="password" formControlName="password" class="form-control">
-			</div>
-			<div *ngIf="error" class="alert alert-danger mb-3">
-				{{ error }}
-			</div>
-			<button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
-		</form>
+		</div>
 	</div>
 </div>
