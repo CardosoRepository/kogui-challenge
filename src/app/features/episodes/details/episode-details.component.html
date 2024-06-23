@@ -1,53 +1,45 @@
 <div class="container p-4">
-	<div class="info-inline mb-4">
-		<h2>
-			<span class="text-primary">#{{id}}</span>
-			Detalhes de <span class="text-decoration-underline">{{ episode.name }}</span>
-		</h2>
-		<button class="btn btn-outline-secondary align-middle" (click)="goToEpisodeList()">
-			<i class="bi bi-arrow-left-short"></i>Voltar
-		</button>
+	<div class="row mb-2">
+		<div class="col text-end">
+			<button class="btn btn-outline-secondary align-middle" (click)="goToEpisodeList()">
+				<i class="bi bi-arrow-left-short"></i>Voltar
+			</button>
+		</div>
+	</div>
+	<div class="row mb-2">
+		<div class="col text-center text-md-start">
+			<h2>
+				<span class="text-primary me-1 align-middle">#{{id}}</span>
+				<span class="align-middle me-1">Detalhes de</span>
+				<span class="text-decoration-underline text-primary align-middle">{{ episode.name }}</span>
+			</h2>
+		</div>
 	</div>
 	<div class="card">
-		<div class="card-body">
-			<div class="row">
-				<div class="col-sm-12 col-md-8 p-4">
-					<div class="mb-4">
-						<h3 class="d-flex align-middle">
-							<i class="bi bi-person-badge me-2 text-warning"></i>
-							<span>Identidade</span>
-						</h3>
-						<div class="bg-light border border-dark rounded p-2 shadow">
-							<div class="info-inline">
-								<span>ID</span>
-								<span>{{ episode.id }}</span>
-							</div>
-							<div class="info-inline">
-								<span>Nome</span>
-								<span>{{ episode.name }}</span>
-							</div>
-							<div class="info-inline">
-								<span>Estreado em</span>
-								<span>{{ episode.air_date }}</span>
-							</div>
-							<div class="info-inline">
-								<span>Episódio</span>
-								<span>{{ episode.episode }}</span>
-							</div>
+		<div class="card-body p-5">
+			<div class="row justify-content-center">
+				<div class="col-sm-12 col-md-7 p-4">
+					<h3 class="d-flex align-middle">
+						<i class="bi bi-person-badge me-2 text-warning"></i>
+						<span>Identidade</span>
+					</h3>
+					<div class="bg-light border border-dark rounded p-2 shadow">
+						<div class="info-inline">
+							<span>ID</span>
+							<span>{{ episode.id }}</span>
 						</div>
-					</div>
-					<div class="mb-4">
-						<h3 class="d-flex align-middle">
-							<i class="bi bi-globe-americas me-2 text-warning"></i>
-							<span>Personagens</span>
-						</h3>
-						<div class="bg-light border border-dark rounded p-2 shadow">
-							<span>{{ episode.characters }}</span>
+						<div class="info-inline">
+							<span>Nome</span>
+							<span>{{ episode.name }}</span>
 						</div>
-					</div>
-					<div class="mt-2">
-						<button class="btn btn-primary me-2">Primeira Aparição</button>
-						<button class="btn btn-outline-primary">Origem</button>
+						<div class="info-inline">
+							<span>Estreado em</span>
+							<span>{{ episode.air_date }}</span>
+						</div>
+						<div class="info-inline">
+							<span>Episódio</span>
+							<span>{{ episode.episode }}</span>
+						</div>
 					</div>
 				</div>
 			</div>
