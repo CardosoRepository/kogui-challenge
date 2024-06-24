@@ -6,47 +6,52 @@
 			</button>
 		</div>
 	</div>
-	<div class="row mb-2">
-		<div class="col text-center text-md-start">
-			<h2>
-				<span class="text-primary me-1 align-middle">#{{id}}</span>
-				<span class="align-middle me-1">Detalhes de</span>
-				<span class="text-decoration-underline text-primary align-middle">{{ location.name }}</span>
-			</h2>
-		</div>
+	<div *ngIf="isLoading; else contentLoaded">
+		<app-loading-spinner></app-loading-spinner>
 	</div>
-	<div class="card">
-		<div class="card-body">
-			<div class="row justify-content-center">
-				<div class="col-sm-12 col-md-7 p-4">
-					<h3 class="d-flex align-middle">
-						<i class="bi bi-globe-americas me-2 text-warning"></i>
-						<span>Informações</span>
-					</h3>
-					<div class="bg-light border border-dark rounded p-3 shadow">
-						<div class="info-inline">
-							<span>ID</span>
-							<span>{{ location.id }}</span>
-						</div>
-						<div class="info-inline">
-							<span>Nome</span>
-							<span>{{ location.name }}</span>
-						</div>
-						<div class="info-inline">
-							<span>Tipo</span>
-							<span>{{ location.type || '-' }}</span>
-						</div>
-						<div class="info-inline">
-							<span>Criado em</span>
-							<span>{{ location.created }}</span>
-						</div>
-						<div class="info-inline">
-							<span>Dimensão</span>
-							<span>{{ location.dimension  }}</span>
+	<ng-template #contentLoaded>
+		<div class="row mb-2">
+			<div class="col text-center text-md-start">
+				<h2>
+					<span class="text-primary me-1 align-middle">#{{id}}</span>
+					<span class="align-middle me-1">Detalhes de</span>
+					<span class="text-decoration-underline text-primary align-middle">{{ location.name }}</span>
+				</h2>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<div class="row justify-content-center">
+					<div class="col-sm-12 col-md-7 p-4">
+						<h3 class="d-flex align-middle">
+							<i class="bi bi-globe-americas me-2 text-warning"></i>
+							<span>Informações</span>
+						</h3>
+						<div class="bg-light border border-dark rounded p-3 shadow">
+							<div class="info-inline">
+								<span>ID</span>
+								<span>{{ location.id }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Nome</span>
+								<span>{{ location.name }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Tipo</span>
+								<span>{{ location.type || '-' }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Criado em</span>
+								<span>{{ location.created }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Dimensão</span>
+								<span>{{ location.dimension  }}</span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</ng-template>
 </div>

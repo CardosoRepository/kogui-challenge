@@ -6,68 +6,73 @@
 			</button>
 		</div>
 	</div>
-	<div class="row mb-2">
-		<div class="col text-center text-md-start">
-			<h2>
-				<img class="img-fluid character-image rounded-3 border border-dark shadow me-2" [src]="character.image"
-					alt="character">
-				<span class="text-primary me-1 align-middle">#{{id}}</span>
-				<span class="align-middle me-1">Detalhes de</span>
-				<span class="text-decoration-underline text-primary align-middle">{{character.name }}</span>
-			</h2>
-		</div>
+	<div *ngIf="isLoading; else contentLoaded">
+		<app-loading-spinner></app-loading-spinner>
 	</div>
-	<div class="card">
-		<div class="card-body p-5">
-			<div class="row justify-content-center">
-				<div class="col-sm-12 col-lg-7 p-4">
-					<div class="mb-4">
+	<ng-template #contentLoaded>
+		<div class="row mb-2">
+			<div class="col text-center text-md-start">
+				<h2>
+					<img class="img-fluid character-image rounded-3 border border-dark shadow me-2" [src]="character.image"
+						alt="character">
+					<span class="text-primary me-1 align-middle">#{{id}}</span>
+					<span class="align-middle me-1">Detalhes de</span>
+					<span class="text-decoration-underline text-primary align-middle">{{character.name }}</span>
+				</h2>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body p-5">
+				<div class="row justify-content-center">
+					<div class="col-sm-12 col-lg-7 p-4">
+						<div class="mb-4">
+							<h3 class="d-flex align-middle">
+								<i class="bi bi-person-badge me-2 text-warning"></i>Identidade
+							</h3>
+							<div class="bg-light border border-dark rounded p-3 shadow">
+								<div class="info-inline">
+									<span>ID</span>
+									<span>{{ character.id }}</span>
+								</div>
+								<div class="info-inline">
+									<span>Nome</span>
+									<span>{{ character.name }}</span>
+								</div>
+								<div class="info-inline">
+									<span>Espécie</span>
+									<span>{{ character.species }}</span>
+								</div>
+								<div class="info-inline">
+									<span>Tipo</span>
+									<span>{{ character.type || '-' }}</span>
+								</div>
+								<div class="info-inline">
+									<span>Gênero</span>
+									<span>{{ character.gender }}</span>
+								</div>
+							</div>
+						</div>
 						<h3 class="d-flex align-middle">
-							<i class="bi bi-person-badge me-2 text-warning"></i>Identidade
-						</h3>
-						<div class="bg-light border border-dark rounded p-3 shadow">
-							<div class="info-inline">
-								<span>ID</span>
-								<span>{{ character.id }}</span>
-							</div>
-							<div class="info-inline">
-								<span>Nome</span>
-								<span>{{ character.name }}</span>
-							</div>
-							<div class="info-inline">
-								<span>Espécie</span>
-								<span>{{ character.species }}</span>
-							</div>
-							<div class="info-inline">
-								<span>Tipo</span>
-								<span>{{ character.type || '-' }}</span>
-							</div>
-							<div class="info-inline">
-								<span>Gênero</span>
-								<span>{{ character.gender }}</span>
-							</div>
-						</div>
-					</div>
-					<h3 class="d-flex align-middle">
-						<i class="bi bi-globe-americas me-2 text-warning"></i>
-						<span>Origem</span>
-					</h3>
-					<div class="bg-light border border-dark rounded p-2 shadow">
-						<div class="info-inline">
+							<i class="bi bi-globe-americas me-2 text-warning"></i>
 							<span>Origem</span>
-							<span *ngIf="character.origin">{{ character.origin.name }}</span>
-						</div>
-						<div class="info-inline">
-							<span>Local</span>
-							<span *ngIf="character.location">{{ character.location.name }}</span>
-						</div>
-						<div class="info-inline">
-							<span>Criação</span>
-							<span>{{ character.created }}</span>
+						</h3>
+						<div class="bg-light border border-dark rounded p-2 shadow">
+							<div class="info-inline">
+								<span>Origem</span>
+								<span *ngIf="character.origin">{{ character.origin.name }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Local</span>
+								<span *ngIf="character.location">{{ character.location.name }}</span>
+							</div>
+							<div class="info-inline">
+								<span>Criação</span>
+								<span>{{ character.created }}</span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</ng-template>
 </div>

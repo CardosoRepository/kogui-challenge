@@ -8,11 +8,12 @@ import { Character } from '@core/models/character.model';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { Subscription } from 'rxjs';
 import { SearchBarService } from '@shared/services/search-bar/search-bar.service';
+import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/loading-spinner.component';
 
 @Component({
 	selector: 'app-characters',
 	standalone: true,
-	imports: [CommonModule, PaginationComponent],
+	imports: [CommonModule, PaginationComponent, LoadingSpinnerComponent],
 	providers: [
 		{
 			provide: LOCALE_ID,

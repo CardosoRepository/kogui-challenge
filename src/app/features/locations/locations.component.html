@@ -9,11 +9,7 @@
 			</div>
 			<ng-template #locationsContent>
 				<div *ngIf="isLoading; else locationsList">
-					<div class="d-flex justify-content-center m-2">
-						<div class="spinner-border" role="status">
-							<span class="visually-hidden">Carregando...</span>
-						</div>
-					</div>
+					<app-loading-spinner></app-loading-spinner>
 				</div>
 				<ng-template #locationsList>
 					<ng-container *ngIf="locations.length > 0; else noLocations">
@@ -30,7 +26,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="align-middle" *ngFor="let location of locations">
+									<tr class="align-middle cursor-pointer" *ngFor="let location of locations" (click)="getLocationDetails(location.id)">
 										<td class="table-cell text-center" scope="row"><span class="text-primary fw-bold">#{{location.id}}</span></td>
 										<td class="table-cell">{{location.name}}</td>
 										<td class="table-cell">{{location.type}}</td>
@@ -40,7 +36,7 @@
 										<td class="table-cell">{{location.dimension}}</td>
 										<td class="table-cell">
 											<button class="btn btn-primary btn-sm float-end me-2"
-												(click)="getLocationDetails(location.id)">Detalhes
+												(click)="getLocationDetails(location.id); $event.stopPropagation()">Detalhes
 											</button>
 										</td>
 									</tr>

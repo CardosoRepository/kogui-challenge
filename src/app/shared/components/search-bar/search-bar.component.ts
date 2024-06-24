@@ -14,13 +14,21 @@ export class SearchBarComponent {
 	searchTerm: string = '';
 
 	constructor(private _searchService: SearchBarService) {
-		this._searchService.currentSearchTerm.subscribe(term => {
+		this._searchService.currentSearchTerm.subscribe((term) => {
 			this.searchTerm = term;
-		})
+		});
 	}
 
 	onSearch(term: EventTarget | null) {
 		const searchTerm = term as HTMLInputElement;
-		this._searchService.updateSearchTerm(searchTerm.value);
+
+		if (!!searchTerm.value.trim()) {
+			this._searchService.updateSearchTerm(searchTerm.value);
+		}
+	}
+
+	clearButton() {
+		this.searchTerm = '';
+		this._searchService.updateSearchTerm(this.searchTerm);
 	}
 }

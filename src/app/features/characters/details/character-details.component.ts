@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '@core/models/character.model';
 import { DateLocaleService } from '@core/services/date-locale.service';
 import { CharactersService } from '@core/services/characters.service';
+import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/loading-spinner.component';
 
 @Component({
 	selector: 'app-character-details',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, LoadingSpinnerComponent],
 	providers: [
 		{
 			provide: LOCALE_ID,
@@ -23,6 +24,7 @@ export class CharacterDetailsComponent implements OnInit {
 	character: Character = {} as Character;
 	id: number = -1;
 	error: string | null = null;
+	isLoading: boolean = false;
 
 	constructor(
 		private _dateLocaleService: DateLocaleService,
@@ -39,13 +41,16 @@ export class CharacterDetailsComponent implements OnInit {
 	}
 
 	private _getCharacterDetails(id: number) {
+		this.isLoading = true;
 		this._charactersService.getItemById(id).subscribe({
 			next: (data) => {
 				this.character = data;
 				this.error = null;
+				this.isLoading = false;
 			},
 			error: (error) => {
 				this.error = error.message;
+				this.isLoading = false;
 			},
 		});
 	}

@@ -1,5 +1,17 @@
 <div class="container p-4 pb-0">
-	<form class="col-12">
-		<input class="form-control" type="text" placeholder="Buscar pelo nome..." (input)="onSearch($event.target)" [value]="searchTerm">
+	<form>
+		<div class="text-center">
+			<label class="form-label" for="searchBar"><h4 class="text-muted">Faça uma busca pelo nome do item</h4></label>
+		</div>
+		<div class="row">
+			<div class="col">
+				<input class="form-control shadow col-auto mb-2" id="searchBar" type="text" placeholder="Digite aqui para realizar a busca..." (input)="onSearch($event.target)" [value]="searchTerm">
+			</div>
+			<div class="col-12 col-md-2">
+				<button class="btn btn-outline-secondary d-inline-flex justify-content-center" (click)="clearButton()">
+					<i class="bi bi-trash me-1"></i>Limpar
+				</button>
+			</div>
+		</div>
 	</form>
 </div>

@@ -9,11 +9,7 @@
 			</div>
 			<ng-template #charactersContent>
 				<div *ngIf="isLoading; else charactersList">
-					<div class="d-flex justify-content-center m-2">
-						<div class="spinner-border" role="status">
-							<span class="visually-hidden">Carregando...</span>
-						</div>
-					</div>
+					<app-loading-spinner></app-loading-spinner>
 				</div>
 				<ng-template #charactersList>
 					<ng-container *ngIf="characters.length > 0; else noCharacters">
@@ -30,7 +26,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="align-middle" *ngFor="let character of characters">
+									<tr class="align-middle cursor-pointer" *ngFor="let character of characters" (click)="getCharacterDetails(character.id)">
 										<td class="table-cell text-center" scope="row"><span
 												class="text-primary fw-bold">#{{character.id}}</span></td>
 										<td class="table-cell">
@@ -45,7 +41,7 @@
 										<td class="table-cell">{{character.status}}</td>
 										<td class="table-cell">
 											<button class="btn btn-primary btn-sm float-end me-2"
-												(click)="getCharacterDetails(character.id)">Detalhes
+												(click)="getCharacterDetails(character.id); $event.stopPropagation()">Detalhes
 											</button>
 										</td>
 									</tr>

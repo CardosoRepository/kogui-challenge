@@ -51,7 +51,7 @@ export class AuthService {
 		}
 
 		if (!newUser?.image) {
-			newUser.image = 'https://github.com/mdo.png';
+			newUser.image = 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png';
 		}
 
 		users.push(newUser);
@@ -93,6 +93,6 @@ const initialState: User[] = [
 	{
 		username: 'user',
 		password: 'password',
-		image: 'https://github.com/mdo.png',
+		image: 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png',
 	},
 ];
