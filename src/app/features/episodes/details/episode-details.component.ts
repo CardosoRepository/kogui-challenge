@@ -44,7 +44,7 @@ export class EpisodeDetailsComponent implements OnInit {
 		this.isLoading = true;
 		this._episodesService.getItemById(id).subscribe({
 			next: (data) => {
-				this.episode = data;
+				this.episode = data as Episode;
 				this.error = null;
 				this.isLoading = false;
 			},

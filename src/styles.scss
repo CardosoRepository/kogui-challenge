@@ -17,20 +17,18 @@ html, body {
 	justify-content: space-between;
 	padding-inline: 0.5rem;
 	padding: 0.5rem;
-
 	transition: all 0.1s;
 	-webkit-transition: all 0.1s;
 	-moz-transition: all 0.1s;
 	-ms-transition: all 0.1s;
 	-o-transition: all 0.1s;
-
-	border-radius: 1rem;
-	-webkit-border-radius: 1rem;
-	-moz-border-radius: 1rem;
-	-ms-border-radius: 1rem;
-	-o-border-radius: 1rem;
+	border-radius: 0.5rem;
+	-webkit-border-radius: 0.5rem;
+	-moz-border-radius: 0.5rem;
+	-ms-border-radius: 0.5rem;
+	-o-border-radius: 0.5rem;
 }
 
 .info-inline:hover {
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.2);
 }

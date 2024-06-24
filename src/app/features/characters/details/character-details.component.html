@@ -15,9 +15,9 @@
 				<h2>
 					<img class="img-fluid character-image rounded-3 border border-dark shadow me-2" [src]="character.image"
 						alt="character">
-					<span class="text-primary me-1 align-middle">#{{id}}</span>
-					<span class="align-middle me-1">Detalhes de</span>
-					<span class="text-decoration-underline text-primary align-middle">{{character.name }}</span>
+					<span class="text-primary align-middle">#{{id}} </span>
+					<span class="align-middle">Detalhes de </span>
+					<span class="text-primary align-middle">{{character.name }}</span>
 				</h2>
 			</div>
 		</div>
@@ -49,6 +49,10 @@
 								<div class="info-inline">
 									<span>Gênero</span>
 									<span>{{ character.gender }}</span>
+								</div>
+								<div class="info-inline">
+									<span>Status</span>
+									<span class="badge shadow-sm align-content-center" [ngClass]="getBadgeClass(character.status)">{{getTranslateStatus(character.status)}}</span>
 								</div>
 							</div>
 						</div>

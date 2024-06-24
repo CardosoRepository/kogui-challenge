@@ -38,7 +38,9 @@
 										<td class="table-cell">{{character.created | date: 'dd/MM/yyyy' }}<br />
 											<span class="text-muted">{{character.created | date: 'HH:mm' }}</span>
 										</td>
-										<td class="table-cell">{{character.status}}</td>
+										<td class="table-cell">
+											<span class="badge shadow-sm align-content-center" [ngClass]="getBadgeClass(character.status)">{{getTranslateStatus(character.status)}}</span>
+										</td>
 										<td class="table-cell">
 											<button class="btn btn-primary btn-sm float-end me-2"
 												(click)="getCharacterDetails(character.id); $event.stopPropagation()">Detalhes

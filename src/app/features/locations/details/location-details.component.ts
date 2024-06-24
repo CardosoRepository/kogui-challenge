@@ -44,7 +44,7 @@ export class LocationDetailsComponent implements OnInit {
 		this.isLoading = true;
 		this._locationsService.getItemById(id).subscribe({
 			next: (data) => {
-				this.location = data;
+				this.location = data as Location;
 				this.error = null;
 				this.isLoading = false;
 			},

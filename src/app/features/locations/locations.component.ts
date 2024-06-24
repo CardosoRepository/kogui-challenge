@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DateLocaleService } from '@core/services/date-locale.service';
 import { LOCALE_ID } from '@angular/core';
 import { LocationsService } from '@core/services/locations.service';
@@ -24,7 +24,7 @@ import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/load
 	templateUrl: './locations.component.html',
 	styleUrl: './locations.component.scss',
 })
-export class LocationsComponent implements OnDestroy {
+export class LocationsComponent implements OnInit, OnDestroy {
 	locations: Location[] = [];
 	error: string | null = null;
 	page: number = 1;
@@ -32,7 +32,7 @@ export class LocationsComponent implements OnDestroy {
 	searchTerm: string = '';
 	isLoading: boolean = false;
 
-	private _searchSubscription: Subscription;
+	private _searchSubscription: Subscription = Subscription.EMPTY;
 
 	constructor(
 		private _dateLocaleService: DateLocaleService,
@@ -40,7 +40,9 @@ export class LocationsComponent implements OnDestroy {
 		private _router: Router,
 		private _activatedRoute: ActivatedRoute,
 		private _searchService: SearchBarService
-	) {
+	) {}
+
+	ngOnInit(): void {
 		this._searchSubscription =
 			this._searchService.currentSearchTerm.subscribe((term) => {
 				this.searchTerm = term;
@@ -62,7 +64,7 @@ export class LocationsComponent implements OnDestroy {
 		this._locationsService.getItems(page, name).subscribe({
 			next: (data) => {
 				if (data.results) {
-					this.locations = data.results;
+					this.locations = data.results as Location[];
 					this.page = page;
 					this.totalPages = data.info.pages;
 					this.error = null;

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DateLocaleService } from '@core/services/date-locale.service';
 import { LOCALE_ID } from '@angular/core';
 import { CharactersService } from '@core/services/characters.service';
@@ -24,7 +24,7 @@ import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/load
 	templateUrl: './characters.component.html',
 	styleUrl: './characters.component.scss',
 })
-export class CharactersComponent implements OnDestroy {
+export class CharactersComponent implements OnInit, OnDestroy {
 	characters: Character[] = [];
 	error: string | null = null;
 	page: number = 1;
@@ -32,7 +32,7 @@ export class CharactersComponent implements OnDestroy {
 	searchTerm: string = '';
 	isLoading: boolean = false;
 
-	private _searchSubscription: Subscription;
+	private _searchSubscription: Subscription = Subscription.EMPTY;
 
 	constructor(
 		private _dateLocaleService: DateLocaleService,
@@ -40,7 +40,9 @@ export class CharactersComponent implements OnDestroy {
 		private _router: Router,
 		private _activatedRoute: ActivatedRoute,
 		private _searchService: SearchBarService
-	) {
+	) {}
+
+	ngOnInit(): void {
 		this._searchSubscription =
 			this._searchService.currentSearchTerm.subscribe((term) => {
 				this.searchTerm = term;
@@ -62,7 +64,7 @@ export class CharactersComponent implements OnDestroy {
 		this._charactersService.getItems(page, name).subscribe({
 			next: (data) => {
 				if (data.results) {
-					this.characters = data.results;
+					this.characters = data.results as Character[];
 					this.page = page;
 					this.totalPages = data.info.pages;
 					this.error = null;
@@ -103,6 +105,14 @@ export class CharactersComponent implements OnDestroy {
 
 	getCharacterDetails(id: number) {
 		this._router.navigate(['/characters', id]);
+	}
+
+	getBadgeClass(status: string) {
+		return this._charactersService.badgeClass(status);
+	}
+
+	getTranslateStatus(status: string) {
+		return this._charactersService.translateStatus(status);
 	}
 }
 

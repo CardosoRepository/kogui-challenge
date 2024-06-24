@@ -44,7 +44,7 @@ export class CharacterDetailsComponent implements OnInit {
 		this.isLoading = true;
 		this._charactersService.getItemById(id).subscribe({
 			next: (data) => {
-				this.character = data;
+				this.character = data as Character;
 				this.error = null;
 				this.isLoading = false;
 			},
@@ -63,6 +63,14 @@ export class CharacterDetailsComponent implements OnInit {
 		return new Date(date).toLocaleDateString(
 			this._dateLocaleService.getLocale()
 		);
+	}
+
+	getBadgeClass(status: string) {
+		return this._charactersService.badgeClass(status);
+	}
+
+	getTranslateStatus(status: string) {
+		return this._charactersService.translateStatus(status);
 	}
 }
 
