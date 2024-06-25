@@ -17,6 +17,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 
 O Kogui Challenge é um site que lista os personagens, locais e episódios da famosa série Rick and Morty. A aplicação possui login, navegação protegida, tela de perfil, barra de busca global e é responsiva
+Obs: existe um usuário padrão de username: user e senha: password
 
 ## 🔖 Acesso
 
