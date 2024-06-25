@@ -20,7 +20,7 @@ O Kogui Challenge é um site que lista os personagens, locais e episódios da fa
 
 ## 🔖 Acesso
 
-Kogui Challenge
+[Kogui Challenge](https://kogui-challenge.netlify.app)
 
 ## 🚀 Como executar
 
