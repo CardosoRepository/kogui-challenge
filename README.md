@@ -1,27 +1,34 @@
-# RickAndMortyKoguiChallenge
+<h1 align="center">
+  Kogui Challenge
+</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+<p align="center">
+  <img alt="kogui_challenge_img" src="src/about.png" width="90%">
+</p>
 
-## Development server
+## ✨ Tecnologias
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-## Code scaffolding
+- [Angular](https://angular.dev)
+- [Bootstrap v5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+- [TypeScript](https://www.typescriptlang.org)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 💻 Projeto
 
-## Build
+O Kogui Challenge é um site que lista os personagens, locais e episódios da famosa série Rick and Morty. A aplicação possui login, navegação protegida, tela de perfil, barra de busca global e é responsiva
+Obs: existe um usuário padrão de username: user e senha: password
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🔖 Acesso
 
-## Running unit tests
+[Kogui Challenge](https://kogui-challenge.netlify.app)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🚀 Como executar
 
-## Running end-to-end tests
+- Clone o repositório
+- Instale as dependências com `npm install`
+- Inicie o servidor com `npm run start`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Agora você pode acessar [`localhost:4200`](http://localhost:4200) do seu navegador.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
