@@ -26,11 +26,12 @@
 			</li>
 		</ul>
 		<div class="dropdown text-center w-100 mt-auto mb-3">
+			<hr>
 			<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser"
 				data-bs-toggle="dropdown" aria-expanded="false">
 				<img [src]="currentUser?.image || 'github.com/mdo.png'" alt="user_image" width="32" height="32"
 					class="rounded-circle">
-				<span class="mx-2 display-username">{{currentUser?.username}}</span>
+				<span class="mx-2 display-username text-break" style="white-space: break-spaces;">{{currentUser?.username}}</span>
 			</a>
 			<ul class="dropdown-menu text-small w-100" aria-labelledby="dropdownUser">
 				<li><a class="dropdown-item" [routerLink]="'/profile'">Perfil</a></li>

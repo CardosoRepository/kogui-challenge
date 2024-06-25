@@ -1,10 +1,4 @@
 import { Routes } from '@angular/router';
-import { CharactersComponent } from '@feature/characters/characters.component';
-import { CharacterDetailsComponent } from '@feature/characters/details/character-details.component';
-import { EpisodeDetailsComponent } from '@feature/episodes/details/episode-details.component';
-import { EpisodesComponent } from '@feature/episodes/episodes.component';
-import { LocationDetailsComponent } from '@feature/locations/details/location-details.component';
-import { LocationsComponent } from '@feature/locations/locations.component';
 import { NotFoundComponent } from '@feature/not-found/not-found.component';
 import { LoginComponent } from './auth/login/login.component';
 import { authGuard } from './auth/auth.guard';
@@ -17,12 +11,18 @@ export const routes: Routes = [
 		component: LayoutComponent,
 		canActivate: [authGuard],
 		children: [
-			{ path: 'characters/:id', component: CharacterDetailsComponent, canActivate: [authGuard] },
-			{ path: 'locations/:id', component: LocationDetailsComponent, canActivate: [authGuard] },
-			{ path: 'episodes/:id', component: EpisodeDetailsComponent, canActivate: [authGuard] },
-			{ path: 'characters', component: CharactersComponent, canActivate: [authGuard] },
-			{ path: 'locations', component: LocationsComponent, canActivate: [authGuard] },
-			{ path: 'episodes', component: EpisodesComponent, canActivate: [authGuard] },
+			{
+				path: 'characters',
+				loadChildren: () => import('@feature/characters/characters-routing.routes').then(m => m.CharactersRoutingModule)
+			},
+			{
+				path: 'locations',
+				loadChildren: () => import('@feature/locations/locations-routing.routes').then(m => m.LocationsRoutingModule)
+			},
+			{
+				path: 'episodes',
+				loadChildren: () => import('@feature/episodes/episodes-routing.routes').then(m => m.EpisodesRoutingModule)
+			},
 			{ path: 'profile', component: ProfileComponent},
 			{ path: '', redirectTo: 'characters', pathMatch: 'full'},
 		]
