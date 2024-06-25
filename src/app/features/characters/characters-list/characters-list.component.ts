@@ -21,10 +21,10 @@ import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/load
 			deps: [DateLocaleService],
 		},
 	],
-	templateUrl: './characters.component.html',
-	styleUrl: './characters.component.scss',
+	templateUrl: './characters-list.component.html',
+	styleUrl: './characters-list.component.scss',
 })
-export class CharactersComponent implements OnInit, OnDestroy {
+export class CharactersListComponent implements OnInit, OnDestroy {
 	characters: Character[] = [];
 	error: string | null = null;
 	page: number = 1;

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from 'app/auth/auth.guard';
-import { EpisodesComponent } from './episodes.component';
-import { EpisodeDetailsComponent } from './details/episode-details.component';
+import { EpisodeDetailsComponent } from '@feature/episodes/episode-details/episode-details.component';
+import { EpisodesListComponent } from '@feature/episodes/episodes-list/episodes-list.component';
 
 const routes: Routes = [
-	{ path: '', component: EpisodesComponent, canActivate: [authGuard] },
+	{ path: '', component: EpisodesListComponent, canActivate: [authGuard] },
 	{ path: ':id', component: EpisodeDetailsComponent, canActivate: [authGuard] },
 ];
 

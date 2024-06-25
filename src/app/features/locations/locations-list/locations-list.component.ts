@@ -21,10 +21,10 @@ import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/load
 			deps: [DateLocaleService],
 		},
 	],
-	templateUrl: './locations.component.html',
-	styleUrl: './locations.component.scss',
+	templateUrl: './locations-list.component.html',
+	styleUrl: './locations-list.component.scss',
 })
-export class LocationsComponent implements OnInit, OnDestroy {
+export class LocationsListComponent implements OnInit, OnDestroy {
 	locations: Location[] = [];
 	error: string | null = null;
 	page: number = 1;
