@@ -16,6 +16,7 @@
 	<div class="card">
 		<div class="card-body p-5">
 			<h4>Editar imagem</h4>
+			<p class="text-muted">Por favor, digite um link da web para alterar sua imagem.</p>
 			<input class="form-control mb-2" type="text" [(ngModel)]="newImageUrl" placeholder="URL da nova imagem">
 			<button class="btn btn-primary" (click)="updateImage()" [disabled]="newImageUrl.trim() === ''">Atualizar imagem</button>
 		</div>

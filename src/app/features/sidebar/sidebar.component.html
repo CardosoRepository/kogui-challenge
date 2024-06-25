@@ -1,8 +1,10 @@
 <div class="sidebar min-vh-100 h-100 position-fixed top-0 start-0">
 	<div class="d-flex flex-column align-items-center text-center h-100">
 		<div class="my-3">
-			<img [src]="currentUser?.image || 'github.com/mdo.png'" alt="user_image" width="64" height="64"
-				class="rounded-circle shadow">
+			<a [routerLink]="'/profile'">
+				<img [src]="currentUser?.image || 'github.com/mdo.png'" alt="user_image" width="64" height="64"
+					class="rounded-circle shadow">
+			</a>
 		</div>
 		<h5 class="text-break">{{ currentUser?.username }}</h5>
 		<ul class="nav flex-column my-4 w-100">

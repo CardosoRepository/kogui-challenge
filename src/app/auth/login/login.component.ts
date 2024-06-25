@@ -27,8 +27,8 @@ export class LoginComponent {
 		private _router: Router
 	) {
 		this.loginForm = this._fb.group({
-			username: ['user', Validators.required],
-			password: ['password', Validators.required],
+			username: ['', Validators.required],
+			password: ['', Validators.required],
 		});
 	}
 
