@@ -1,14 +1,14 @@
 <nav class="my-2">
 	<ul class="pagination mb-0">
 		<li class="page-item cursor-pointer" [class.disabled]="page === 1">
-			<a class="page-link" tabindex="-1" [attr.aria-disabled]="page === 1" (click)="previousPage()">Anterior</a>
+			<a class="page-link" tabindex="-1" [attr.aria-disabled]="page === 1" (click)="previousPage()">{{'<'}}</a>
 		</li>
 		<li *ngFor="let p of pages" class="page-item cursor-pointer" [class.active]="p === page" [class.disabled]="p === '...'">
 			<a *ngIf="p !== '...'" class="page-link" (click)="onPageChange(+p)">{{ p }}</a>
 			<span *ngIf="p === '...'" class="page-link">...</span>
 		</li>
 		<li class="page-item cursor-pointer" [class.disabled]="page === totalPages">
-			<a class="page-link" [attr.aria-disabled]="page === totalPages" (click)="nextPage()">Próxima</a>
+			<a class="page-link" [attr.aria-disabled]="page === totalPages" (click)="nextPage()">{{'>'}}</a>
 		</li>
 	</ul>
 </nav>

@@ -1,17 +1,16 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { User } from '@core/models/user.model';
 import { AuthService } from 'app/auth/auth.service';
 
 @Component({
-	selector: 'app-header',
-	standalone: true,
-	imports: [CommonModule, RouterModule],
-	templateUrl: './header.component.html',
-	styleUrl: './header.component.scss',
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [RouterModule],
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.scss'
 })
-export class HeaderComponent implements OnInit {
+export class SidebarComponent {
 	currentUser: User | null = null;
 
 	constructor(private _authService: AuthService, private _router: Router) {}

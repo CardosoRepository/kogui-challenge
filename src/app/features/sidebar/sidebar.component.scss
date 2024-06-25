@@ -1,0 +1,71 @@
+/* Estilos base para a barra lateral */
+.sidebar {
+	background-color: #e1ebf5;
+	width: 250px;
+	z-index: 1000;
+	padding: 1rem;
+}
+
+/* Estilos dos itens de navegação */
+.sidebar .nav-link {
+	display: flex;
+	border-radius: 5px;
+	color: #212529;
+	text-decoration: none;
+	padding: 1rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+/* Estilo do item de navegação ativo */
+.sidebar .nav-link.active {
+	background-color: #007bff;
+	color: white;
+}
+
+/* Efeito hover nos itens de navegação */
+.sidebar .nav-link:hover {
+	background-color: #a9b6c0;
+}
+
+/* Efeito hover do item de navegação ativo */
+.sidebar .nav-link.active:hover {
+	background-color: #006bdd;
+	color: white;
+}
+
+/* Estilo dos ícones de navegação */
+.sidebar .nav-link i {
+	margin-right: 0.5rem;
+}
+
+/* Estilos para dispositivos menores (até 768px de largura) */
+@media (max-width: 768px) {
+	.sidebar {
+		width: 80px;
+		padding: 0;
+	}
+
+	.sidebar .nav-link {
+		justify-content: center;
+		border-radius: 0px;
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		-ms-border-radius: 0px;
+		-o-border-radius: 0px;
+	}
+
+	.sidebar .nav-link i {
+		margin-right: 0;
+	}
+
+	.sidebar .username,
+	.sidebar .link-text,
+	.sidebar .dropdown-toggle .display-username {
+		display: none;
+	}
+
+	.sidebar .nav-item {
+		text-align: center;
+	}
+}

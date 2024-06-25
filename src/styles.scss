@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-	min-width: 561px;
-	min-height: 100vh;
+* {
+	font-family: 'Roboto', sans-serif;
 }
 
 .cursor-pointer {
@@ -29,6 +28,28 @@ html, body {
 	-o-border-radius: 0.5rem;
 }
 
+.info-inline > span:first-child {
+	font-weight: bold;
+}
+
 .info-inline:hover {
 	background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+	.info-inline {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.info-inline:hover {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+}
+
+@media (max-width: 576px) {
+	* {
+		font-size: small;
+	}
 }

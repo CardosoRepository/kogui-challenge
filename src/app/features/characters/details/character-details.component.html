@@ -22,12 +22,13 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-body p-5">
+			<div class="card-body p-4">
 				<div class="row justify-content-center">
 					<div class="col-sm-12 col-lg-7 p-4">
 						<div class="mb-4">
 							<h3 class="d-flex align-middle">
-								<i class="bi bi-person-badge me-2 text-warning"></i>Identidade
+								<i class="bi bi-person-badge me-2 text-warning"></i>
+								<span>Identidade</span>
 							</h3>
 							<div class="bg-light border border-dark rounded p-3 shadow">
 								<div class="info-inline">
@@ -52,7 +53,7 @@
 								</div>
 								<div class="info-inline">
 									<span>Status</span>
-									<span class="badge shadow-sm align-content-center" [ngClass]="getBadgeClass(character.status)">{{getTranslateStatus(character.status)}}</span>
+									<span class="badge shadow-sm align-content-center" [class.text-dark]="getBadgeClass(character.status) === 'bg-warning'" [ngClass]="getBadgeClass(character.status)">{{getTranslateStatus(character.status)}}</span>
 								</div>
 							</div>
 						</div>

@@ -1,0 +1,9 @@
+.col{
+    margin-left: 250px;
+}
+
+@media (max-width: 768px) {
+    .col {
+        margin-left: 80px;
+    }
+}

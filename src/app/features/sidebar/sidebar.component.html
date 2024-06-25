@@ -1,0 +1,42 @@
+<div class="sidebar min-vh-100 h-100 position-fixed top-0 start-0">
+	<div class="d-flex flex-column align-items-center text-center h-100">
+		<div class="my-3">
+			<img [src]="currentUser?.image || 'github.com/mdo.png'" alt="user_image" width="64" height="64"
+				class="rounded-circle shadow">
+		</div>
+		<h5 class="text-break">{{ currentUser?.username }}</h5>
+		<ul class="nav flex-column my-4 w-100">
+			<li class="nav-item">
+				<a [routerLink]="'/characters'" routerLinkActive="active" class="nav-link">
+					<i class="bi bi-person"></i>
+					<span class="link-text">Personagens</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a [routerLink]="'/locations'" routerLinkActive="active" class="nav-link">
+					<i class="bi bi-geo-alt"></i>
+					<span class="link-text">Locais</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a [routerLink]="'/episodes'" routerLinkActive="active" class="nav-link">
+					<i class="bi bi-camera-reels"></i>
+					<span class="link-text">Episódios</span>
+				</a>
+			</li>
+		</ul>
+		<div class="dropdown text-center w-100 mt-auto mb-3">
+			<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser"
+				data-bs-toggle="dropdown" aria-expanded="false">
+				<img [src]="currentUser?.image || 'github.com/mdo.png'" alt="user_image" width="32" height="32"
+					class="rounded-circle">
+				<span class="mx-2 display-username">{{currentUser?.username}}</span>
+			</a>
+			<ul class="dropdown-menu text-small w-100" aria-labelledby="dropdownUser">
+				<li><a class="dropdown-item" [routerLink]="'/profile'">Perfil</a></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><button class="dropdown-item" (click)="logout()">Logout</button></li>
+			</ul>
+		</div>
+	</div>
+</div>
