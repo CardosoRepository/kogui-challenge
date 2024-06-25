@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DateLocaleService } from '@core/services/date-locale.service';
-import { LOCALE_ID } from '@angular/core';
 import { CharactersService } from '@core/services/characters.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '@core/models/character.model';
@@ -14,13 +12,6 @@ import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/load
 	selector: 'app-characters',
 	standalone: true,
 	imports: [CommonModule, PaginationComponent, LoadingSpinnerComponent],
-	providers: [
-		{
-			provide: LOCALE_ID,
-			useFactory: provideLocaleId,
-			deps: [DateLocaleService],
-		},
-	],
 	templateUrl: './characters-list.component.html',
 	styleUrl: './characters-list.component.scss',
 })
@@ -35,7 +26,6 @@ export class CharactersListComponent implements OnInit, OnDestroy {
 	private _searchSubscription: Subscription = Subscription.EMPTY;
 
 	constructor(
-		private _dateLocaleService: DateLocaleService,
 		private _charactersService: CharactersService,
 		private _router: Router,
 		private _activatedRoute: ActivatedRoute,
@@ -68,8 +58,6 @@ export class CharactersListComponent implements OnInit, OnDestroy {
 					this.page = page;
 					this.totalPages = data.info.pages;
 					this.error = null;
-				} else {
-					this.error = 'Falha ao buscar os personagens.';
 				}
 				this.isLoading = false;
 			},
@@ -97,12 +85,6 @@ export class CharactersListComponent implements OnInit, OnDestroy {
 		this._getCharacters(page, this.searchTerm);
 	}
 
-	formatDate(date: string): string {
-		return new Date(date).toLocaleDateString(
-			this._dateLocaleService.getLocale()
-		);
-	}
-
 	getCharacterDetails(id: number) {
 		this._router.navigate(['/characters', id]);
 	}
@@ -114,8 +96,4 @@ export class CharactersListComponent implements OnInit, OnDestroy {
 	getTranslateStatus(status: string) {
 		return this._charactersService.translateStatus(status);
 	}
-}
-
-export function provideLocaleId(DateLocaleService: DateLocaleService) {
-	return DateLocaleService.getLocale();
 }

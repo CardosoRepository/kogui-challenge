@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DateLocaleService } from '@core/services/date-locale.service';
-import { LOCALE_ID } from '@angular/core';
 import { LocationsService } from '@core/services/locations.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@core/models/location.model';
@@ -14,13 +12,6 @@ import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/load
 	selector: 'app-locations',
 	standalone: true,
 	imports: [CommonModule, PaginationComponent, LoadingSpinnerComponent],
-	providers: [
-		{
-			provide: LOCALE_ID,
-			useFactory: provideLocaleId,
-			deps: [DateLocaleService],
-		},
-	],
 	templateUrl: './locations-list.component.html',
 	styleUrl: './locations-list.component.scss',
 })
@@ -35,7 +26,6 @@ export class LocationsListComponent implements OnInit, OnDestroy {
 	private _searchSubscription: Subscription = Subscription.EMPTY;
 
 	constructor(
-		private _dateLocaleService: DateLocaleService,
 		private _locationsService: LocationsService,
 		private _router: Router,
 		private _activatedRoute: ActivatedRoute,
@@ -97,17 +87,7 @@ export class LocationsListComponent implements OnInit, OnDestroy {
 		this._getLocations(page, this.searchTerm);
 	}
 
-	formatDate(date: string): string {
-		return new Date(date).toLocaleDateString(
-			this._dateLocaleService.getLocale()
-		);
-	}
-
 	getLocationDetails(id: number) {
 		this._router.navigate(['/locations', id]);
 	}
-}
-
-export function provideLocaleId(DateLocaleService: DateLocaleService) {
-	return DateLocaleService.getLocale();
 }

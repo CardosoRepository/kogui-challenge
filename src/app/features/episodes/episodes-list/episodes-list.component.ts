@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DateLocaleService } from '@core/services/date-locale.service';
-import { LOCALE_ID } from '@angular/core';
 import { EpisodesService } from '@core/services/episodes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Episode } from '@core/models/episode.model';
@@ -14,13 +12,6 @@ import { LoadingSpinnerComponent } from '@shared/components/loading-spinner/load
 	selector: 'app-episodes',
 	standalone: true,
 	imports: [CommonModule, PaginationComponent, LoadingSpinnerComponent],
-	providers: [
-		{
-			provide: LOCALE_ID,
-			useFactory: provideLocaleId,
-			deps: [DateLocaleService],
-		},
-	],
 	templateUrl: './episodes-list.component.html',
 	styleUrl: './episodes-list.component.scss',
 })
@@ -35,7 +26,6 @@ export class EpisodesListComponent implements OnInit, OnDestroy {
 	private _searchSubscription: Subscription = Subscription.EMPTY;
 
 	constructor(
-		private _dateLocaleService: DateLocaleService,
 		private _episodesService: EpisodesService,
 		private _router: Router,
 		private _activatedRoute: ActivatedRoute,
@@ -97,17 +87,7 @@ export class EpisodesListComponent implements OnInit, OnDestroy {
 		this._getEpisodes(page, this.searchTerm);
 	}
 
-	formatDate(date: string): string {
-		return new Date(date).toLocaleDateString(
-			this._dateLocaleService.getLocale()
-		);
-	}
-
 	getEpisodeDetails(id: number) {
 		this._router.navigate(['/episodes', id]);
 	}
-}
-
-export function provideLocaleId(DateLocaleService: DateLocaleService) {
-	return DateLocaleService.getLocale();
 }
